@@ -204,6 +204,7 @@
                     style="font-size: 14px;color:green;text-decoration:none;font-weight:bold;" title="Create Inquiry"
                     class="az-header-search-link"><i style="color:green;font-size:18px;" class="fas fa-plus-square"></i></a>
             @endif
+           {{-- General Notification --}}
             <div class="dropdown az-header-notification">
                 <a href="" class="" title="My General Notification" id="noti_general"><i
                         class="typcn typcn-bell"></i></a>
@@ -211,7 +212,7 @@
                     <div class="az-dropdown-header mg-b-20 d-sm-none">
                         <a href="" class="az-header-arrow"><i class="icon ion-md-arrow-back"></i></a>
                     </div>
-                    <h6 class="az-notification-title">General NotiFications</h6>
+                    <h6 class="az-notification-title">General Notifications</h6>
                     <p class="az-notification-text">You have <span id="noti_count_general">0</span> unread
                         notification</p>
                     <div class="az-notification-list" id="add_noti_general">
@@ -219,6 +220,8 @@
                     <div class="dropdown-footer"><a href="">View All Notifications</a></div>
                 </div><!-- dropdown-menu -->
             </div><!-- az-header-notification -->
+
+            {{-- Approval Notification --}}
             <div class="dropdown az-header-notification">
                 <a href="" class="" title="My Approvals Notification" id="noti_approvals"><i
                         class="typcn typcn-thumbs-up"></i></a>
@@ -234,6 +237,8 @@
                     <div class="dropdown-footer"><a href="">View All Notifications</a></div>
                 </div><!-- dropdown-menu -->
             </div><!-- az-header-notification -->
+
+            {{-- Payment Notification --}}
             <div class="dropdown az-header-notification">
                 <a href="" class="" title="My Payments Notification" id="noti_payments">
                     <i class="typcn typcn-mail"></i></a>
@@ -251,6 +256,8 @@
                     <div class="dropdown-footer"><a href="">View All Notifications</a></div>
                 </div><!-- dropdown-menu -->
             </div><!-- az-header-notification -->
+
+            {{-- Issuance Notification --}}
             <div class="dropdown az-header-notification">
                 <a href="" class="" title="My Issuance Notification" id="noti_issuance"><i
                         class="typcn typcn-flow-merge"></i></a>
