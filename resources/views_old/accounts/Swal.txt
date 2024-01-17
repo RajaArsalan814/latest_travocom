@@ -1,0 +1,143 @@
+    Swal.fire({
+                            title: "You Want To Access Our Inventory's Data",
+                            showDenyButton: true,
+                            showCancelButton: false,
+                            confirmButtonText: 'Yes',
+                            denyButtonText: `No`,
+                        }).then((result) => {
+                            /* Read more about isConfirmed, isDenied below */
+                            if (result.isConfirmed) {
+                                $('#modaldemo2').modal('show');
+
+                            } else if (result.isDenied) {
+                                var services_id = $('#services_id').val();
+                                var get_inquiry_id = $('#inquiry_id').val();
+
+
+                                $.ajax({
+                                    // alert(count)
+                                    url: "{{ url('get_quotations_sub_services') }}/" +
+                                        sub_services_id +
+                                        '/' + services_id + '/' + get_inquiry_id + '/' +
+                                        count,
+                                    type: 'GET',
+                                    success: function(data) {
+                                        alert(count);
+                                        if (data.services_name == "VISA") {
+                                            $('#feild_1' + count).html(
+                                                "No Of Adults");
+                                            $('#feild_2' + count).html(
+                                                "No Of Children");
+                                            $('#feild_3' + count).html(
+                                                "No Of Infants");
+                                            $('#feild_4' + count).html(
+                                                "Cost Price");
+                                            $('#feild_5' + count).html(
+                                                "Selling Price");
+                                            // $('#feild_6').html("No Of Infants");
+                                            $('#feild_6' + count).html("Sub Total");
+                                            $('#feild_7' + count).html("Discount");
+                                            $('#feild_8' + count).html("Total");
+                                            $('#feild_9' + count).html(
+                                                '<i class="fa fa-trash"></i>');
+                                            $('#feild_10' + count).html(
+                                                '<i class="fa fa-plus"></i>');
+                                            $('#input_feild_1' + count).html(
+                                                '<input style="width:100px" type="number" onchange="calculate(' +
+                                                count +
+                                                ')" name="no_of_adults' +
+                                                count +
+                                                '" id="no_of_adults" class="form-control">'
+                                            );
+                                            $('#input_feild_2' + count).html(
+                                                '<input style="width:100px" type="number" name="no_of_children" id="no_of_children' +
+                                                count +
+                                                '" onchange="calculate(' +
+                                                count +
+                                                ')" class="form-control">'
+                                            );
+                                            $('#input_feild_3' + count).html(
+                                                '<input style="width:100px" type="number" name="no_of_infants" id="no_of_infants' +
+                                                count +
+                                                '" onchange="calculate(' +
+                                                count +
+                                                ')" class="form-control">'
+                                            );
+                                            $('#input_feild_4' + count).html(
+                                                '<input style="width:100px" type="number" name="cost_price" onchange="calculate(' +
+                                                count + ')" id="cost_price' +
+                                                count +
+                                                '" class="form-control">'
+                                            );
+                                            $('#input_feild_5' + count).html(
+                                                '<input style="width:100px" type="number" name="selling_price" onchange="calculate(' +
+                                                count + ')" id="selling_price' +
+                                                count +
+                                                '" class="form-control">'
+                                            );
+                                            $('#input_feild_6' + count).html(
+                                                '<input style="width:100px" type="number" id="sub_total' +
+                                                count +
+                                                '" name="sub_total" onchange="calculate(' +
+                                                count +
+                                                ')" class="form-control">'
+                                            );
+                                            $('#input_feild_7' + count).html(
+                                                '<input style="width:100px" type="number" name="discount" id="discount' +
+                                                count +
+                                                '" onchange="calculate(' +
+                                                count +
+                                                ')" class="form-control">'
+                                            );
+                                            $('#input_feild_8' + count).html(
+                                                '<input style="width:100px" type="number" id="total' +
+                                                count +
+                                                '" name="total" onchange="calculate(' +
+                                                count +
+                                                ')" class="form-control">'
+                                            );
+                                            $('#input_feild_9' + count).html(
+                                                '<button type="button" class="btn btn-danger" onclick="remove_row(' +
+                                                count + ')">X</button>');
+                                            $('#input_feild_10' + count).html(
+                                                '<button type="button" class="btn btn-success" onclick="add_row(' +
+                                                count + ',' + get_inquiry_id +
+                                                ')">Add</button>');
+
+                                        }
+                                        if (data.services_name == "Hotel") {
+                                            $('#feild_1').html("Name");
+                                            $('#feild_2').html("Beds");
+                                            $('#feild_3').html("Check In");
+                                            $('#feild_4').html("Check Out");
+                                            $('#input_feild_1').html(
+                                                '<input style="width:100px" type="number" id="no_of_adults" onchange="calculate()" name="no_of_adults" class="form-control">'
+                                            );
+                                            $('#input_feild_2').html(
+                                                '<input style="width:100px" type="number" id="no_of_children" onchange="calculate()" name="no_of_children" class="form-control">'
+                                            );
+                                            $('#input_feild_3').html(
+                                                '<input style="width:100px" type="number" id="no_of_infants" onchange="calculate()" name="no_of_infants" class="form-control">'
+                                            );
+                                            $('#input_feild_4').html(
+                                                '<input style="width:100px" type="number" id="cost_price" onchange="calculate()" name="cost_price" class="form-control">'
+                                            );
+                                            $('#input_feild_5').html(
+                                                '<input style="width:100px" type="number" id="selling_price" onchange="calculate()" name="selling_price" class="form-control">'
+                                            );
+                                            $('#input_feild_6').html(
+                                                '<input style="width:100px" type="number" id="sub_total" onchange="calculate()" name="sub_total" class="form-control">'
+                                            );
+                                            $('#input_feild_7').html(
+                                                '<button type="button" class="btn btn-danger" onclick="remove_row(' +
+                                                count + ')">X</button>');
+
+                                        }
+                                        count = count + 1;
+                                        $('#append_table').append(data
+                                            .table_details);
+                                    }
+                                });
+                                // Swal.fire('Changes are not saved', '', 'info')
+                            }
+                        })
